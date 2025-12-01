@@ -2,15 +2,16 @@ import java.util.*;
 
 class Solution {    
     public int solution(int[] nums) {
-        Map<Integer, Integer> pokemons = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        
         for(int num:nums) {
-            pokemons.put(num, pokemons.getOrDefault(num,0)+1);
+            set.add(num);
         }
-        int hN = nums.length/2;
-        if(hN <= pokemons.size()) {
-            return hN;
-        } else {
-            return pokemons.size();
-        }
+        
+        int uniqueKinds = set.size();
+        int maxPick = nums.length / 2;
+        
+        return Math.min(uniqueKinds, maxPick);
+        
     }
 }
